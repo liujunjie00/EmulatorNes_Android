@@ -22,6 +22,7 @@ public class NesKeyDate {
         intentSendkeyS = new Intent();
         this.context = context;
         gameRuntimeInfo = new GameRuntimeInfo();
+        intentSendkeyS.setAction("keyboard");
     }
 
     public NesKeyDate() {
@@ -77,21 +78,21 @@ public class NesKeyDate {
     }
 
     private void keypossess(int keyAttribute, int key, int turbos) {
-      /*  long lasTime = System.currentTimeMillis();
+        long lasTime = System.currentTimeMillis();
         if (lasTime - startTime > 20){
             startTime = lasTime;
-            //gameRuntimeInfo.SkillsAndGamesRunning(key,turbos,50);
-        }*/
+            gameRuntimeInfo.SkillsAndGamesRunning(key,turbos,50);
+        }
 
 
-        intentSendkeyS.setAction("keyboard");
-        intentSendkeyS.putExtra("key",key);
+
+       /* intentSendkeyS.putExtra("key",key);
         intentSendkeyS.putExtra("turbos",turbos);
 
         synchronized (lock){
                     context.sendBroadcast(intentSendkeyS);
 
-        }
+        }*/
 
 
 
@@ -106,12 +107,9 @@ public class NesKeyDate {
         for (int deviceId : deviceIds) {
             InputDevice dev = InputDevice.getDevice(deviceId);
             int sources = dev.getSources();
-
-            // Verify that the device has gamepad buttons, control sticks, or both.
             if (((sources & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD)
                     || ((sources & InputDevice.SOURCE_JOYSTICK)
                     == InputDevice.SOURCE_JOYSTICK)) {
-                // This device is a game controller. Store its device ID.
                 if (!gameControllerDeviceIds.contains(deviceId)) {
                     gameControllerDeviceIds.add(deviceId);
                 }
