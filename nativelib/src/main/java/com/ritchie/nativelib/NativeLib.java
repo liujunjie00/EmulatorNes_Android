@@ -48,4 +48,6 @@ public class NativeLib {
     public native boolean loadHistoryState(int pos);
 
     public native boolean renderVP(Bitmap bitmap, int vw, int vh);
+
+    public native long getGameRomAddr(int offSizeAddr,int value);
 }

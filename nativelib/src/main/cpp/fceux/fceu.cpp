@@ -45,6 +45,7 @@
 #include "ines.h"
 #include "driver.h"
 
+
 #ifdef WIN32
 #include "drivers/win/pref.h"
 #include "utils/xstring.h"
@@ -279,6 +280,7 @@ int AllocGenieRW(void) {
 	return 1;
 }
 
+
 void FlushGenieRW(void) {
 	int32 x;
 
@@ -351,7 +353,9 @@ uint8 *RAM;
 //windows might need to allocate these differently, so we have some special code
 
 static void AllocBuffers() {
+	// liujunjie 开辟内存空间的地方
 	RAM = (uint8*)FCEU_gmalloc(0x800);
+	//
 }
 
 static void FreeBuffers() {

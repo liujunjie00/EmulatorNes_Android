@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="600dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@color/bragound">
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.ritchie.mapsandftms.ui.VerticalProgress
+            android:id="@+id/vp_progress"
+            android:layout_width="50dp"
+            android:layout_height="500dp"
+            app:progress_border_enable="true"
+            app:progress_solid_color="@color/white"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="读取maps值"
+                android:id="@+id/button1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_view_main"
+                android:text="提示函数"
+                android:textSize="25dp"
+                />
+
+
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_view1"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开始游戏"
+                android:id="@+id/button2"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="否"
+                android:id="@+id/button3"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+            />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="打印内存"
+                android:id="@+id/button4"/>
+        </LinearLayout>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="距离0x190xa6的偏移量"
+            android:id="@+id/edit_text3"
+            android:visibility="gone"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="查找的值"
+            android:id="@+id/edit_text4"
+            android:visibility="gone"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重启nes"
+            android:id="@+id/button5"
+            />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/test_view2"
+            android:text="这个是提示信息"
+            android:textSize="25dp"
+            android:layout_marginTop="30dp"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/test_view3"
+            android:text="这个是提示信息"
+            android:textSize="25dp"
+            android:layout_marginTop="20dp"
+            />
+     </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

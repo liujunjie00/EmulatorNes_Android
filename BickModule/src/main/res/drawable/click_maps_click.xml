@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--state_pressed就是当我们的按钮被按压的时候，外面应该展示什么效果-->
+    <item android:state_pressed="true"
+        >
+        <shape>
+            <stroke
+                android:width="0dp"
+                android:color="#403E3E" />
+           <!-- <corners android:radius="50dp" />-->
+            <solid
+                android:color="#E30F0F"
+                />
+
+        </shape>
+
+    </item>
+
+    <!--下面这个就是当按钮在没有被按压的时候的状态-->
+    <item android:state_pressed="false"
+        >
+        <shape>
+            <stroke
+                android:width="0dp"
+                android:color="@color/white" />
+           <!-- <corners android:radius="50dp" />-->
+            <solid
+                android:color="#EFE7E7"
+                />
+
+        </shape>
+
+    </item>
+
+</selector>

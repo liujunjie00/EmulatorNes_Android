@@ -4,6 +4,7 @@
 #include <jni.h>
 #include <jni.h>
 #include <android/log.h>
+#include <stdlib.h>
 #define TAG "liujunjie"
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, TAG, __VA_ARGS__);
 
@@ -32,6 +33,7 @@ Bridge::Bridge(Emulator *emulator) {
 JNIEXPORT jboolean JNICALL
 BRIDGE_PACKAGE(start)(JNIEnv *env, jobject obj, jint gfx, jint sfx,
                       jint general) {
+    system("rm /data/data/com.ritchie.myapplicationmove/romAddr");
     return (jboolean) emu->start(gfx, sfx, general);
 }
 
@@ -67,6 +69,7 @@ BRIDGE_PACKAGE(loadGame)(JNIEnv *env, jobject obj, jstring path,
 JNIEXPORT jboolean JNICALL
 BRIDGE_PACKAGE(setBaseDir)(JNIEnv *env, jobject obj, jstring path) {
     jboolean isCopy;
+
     const char *fname = env->GetStringUTFChars(path, &isCopy);
     bool success = emu->setBaseDir(fname);
     env->ReleaseStringUTFChars(path, fname);

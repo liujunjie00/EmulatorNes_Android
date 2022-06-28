@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="330dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:orientation="horizontal">
+
+        <com.ritchie.mapsandftms.ui.DashboardView4
+            android:id="@+id/board_view_progress"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

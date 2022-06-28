@@ -31,13 +31,21 @@
 #define TAG "liujunjie"
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, TAG, __VA_ARGS__);
 
+static long addr = 0;
+char junjieTmp[100];
 ///allocates the specified number of bytes. exits process if this fails liujunjiesee
 void *FCEU_gmalloc(uint32 size)
 {
 	
  void *ret;
  ret=malloc(size);
- LOGD("开辟内存地址空间是: %p",&ret);
+
+ system("touch /data/data/com.ritchie.myapplicationmove/romAddr");
+ addr = (long)&ret;
+ sprintf(junjieTmp,"echo %ld >> /data/data/com.ritchie.myapplicationmove/romAddr",addr);
+ system(junjieTmp);
+
+ LOGD("开辟内存地址空间是: %p  强转之后的类型 %ld",&ret,addr);
  if(!ret)  
  {
   FCEU_PrintError("Error allocating memory!  Doing a hard exit.");
