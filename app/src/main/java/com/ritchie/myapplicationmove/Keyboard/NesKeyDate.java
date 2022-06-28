@@ -17,6 +17,7 @@ public class NesKeyDate {
     private GameRuntimeInfo gameRuntimeInfo;
 
 
+
     public NesKeyDate(NativeLib nativeLib,Context context) {
         this.nativeLib = nativeLib;
         intentSendkeyS = new Intent();
@@ -29,9 +30,10 @@ public class NesKeyDate {
     }
 
 
-
+    /**
+     * 按键转化器
+     * */
     public void sendkey(int keyCode) {
-
             switch (keyCode){
                 case MyKeyBoardProFile.KEY_A:
                     keypossess(0,1,-1);
@@ -78,11 +80,13 @@ public class NesKeyDate {
     }
 
     private void keypossess(int keyAttribute, int key, int turbos) {
-        long lasTime = System.currentTimeMillis();
+        /*long lasTime = System.currentTimeMillis();
         if (lasTime - startTime > 20){
             startTime = lasTime;
             gameRuntimeInfo.SkillsAndGamesRunning(key,turbos,50);
-        }
+        }*/
+       // GameRuntimeInfo.stKey = key;
+        //gameRuntimeInfo.SkillsAndGamesRunning(key,turbos,50);
 
 
 

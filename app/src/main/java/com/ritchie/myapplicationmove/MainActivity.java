@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 
+import com.ritchie.myapplicationmove.Keyboard.MyKeyBoardProFile;
 import com.ritchie.myapplicationmove.Keyboard.NesKeyDate;
 import com.ritchie.myapplicationmove.gameFile.GameFileInit;
 import com.ritchie.myapplicationmove.runtime.GameRuntimeInfo;
@@ -24,13 +25,12 @@ import com.ritchie.nativelib.NativeLib;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     private static final String TAG = "liujunjie";
     private NativeLib nativeLib;
     private boolean off = true;
     private NesGameWindows nesGameWindows;
     private String[] perms;
-    private int i =0;
     private GameFileInit gameFileInit;
     private GameRuntimeInfo gameRuntimeInfo;
     private  NesKeyDate gameKey;
@@ -68,20 +68,88 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * 按键处理器*/
+
     @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        String keyName = "";
-            gameKey.sendkey(event.getKeyCode());
-
-        Log.d(TAG, "dispatchKeyEvent: "+keyName+"键盘码:"+event.getKeyCode());
-
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        Log.d(TAG, "onKeyUp: "+keyCode);
+        sendkey(keyCode,false);
+        //gameRuntimeInfo.resetStTurbo();
         return true;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.d(TAG, "onKeyUp down : "+keyCode);
+        sendkey(keyCode,true);
+        return true;
+    }
+    /**
+     * 键盘转化器
+     * 1 10 1
+     * */
+    private void sendkey(int keyCode,boolean DownUP) {
+
+        switch (keyCode){
+            case MyKeyBoardProFile.KEY_A:
+                keypossess(1,1,-1,DownUP); // 1 1
+                break;
+            case MyKeyBoardProFile.KEY_B:
+                keypossess(1,2,-1,DownUP);// 10 1
+                break;
+            case MyKeyBoardProFile.KEY_A_TURBO:
+                keypossess(2,1,-2,DownUP);// 1  10
+                break;
+            case MyKeyBoardProFile.KEY_B_TURBO:
+                keypossess(2,1,-3,DownUP);// 1 11
+                break;
+            case MyKeyBoardProFile.KEY_SELECT:
+                keypossess(3,4,-1,DownUP);// 100
+                break;
+            case MyKeyBoardProFile.KEY_START:
+                keypossess(3,8,-1,DownUP);// 1000
+                break;
+            case MyKeyBoardProFile.KEY_LEFT:
+                keypossess(0,64,-1,DownUP);// 1000000
+                break;
+            case MyKeyBoardProFile.KEY_RIGHT:
+                keypossess(0,128,-1,DownUP);// 10000000
+                break;
+            case MyKeyBoardProFile.KEY_UP:
+                keypossess(0,16,-1,DownUP);// 10000
+                break;
+            case MyKeyBoardProFile.KEY_DOWN:
+                keypossess(0,32,-1,DownUP);// 100000
+                break;
+            case MyKeyBoardProFile.KEY_L1:
+
+                break;
+            case MyKeyBoardProFile.KEY_R1:
+                break;
+
+        }
 
 
     }
 
+    /**
+     * @param category 表示键盘的类型,是方向键还是
+     * @param keys 表示需要输入键盘的值
+     * @param trubo 表示是否连发
+     * @param downOrUp  表示是否是按下还是抬起
+     * */
+    private void keypossess(int category, int keys, int trubo,boolean downOrUp) {
+
+        if (!downOrUp){
+            gameRuntimeInfo.resetStKey(keys,trubo);
+            Log.d(TAG, "keypossess: up:::::" + keys);
+
+        }else {
+            Log.d(TAG, "keypossess: down::::" + keys);
+            gameRuntimeInfo.setStKey(keys,trubo);
+        }
+
+
+    }
 
 
     private void checkPermission(String[] perms) {

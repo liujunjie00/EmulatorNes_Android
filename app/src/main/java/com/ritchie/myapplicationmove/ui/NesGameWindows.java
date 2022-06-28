@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -36,7 +37,6 @@ public class NesGameWindows extends SurfaceView implements SurfaceHolder.Callbac
     public void tick() {
         synchronized (locker) {
            boolean uuuu = nativeLib.render(vram);
-           int ss = uuuu ? 33:66;
         }
 
         SurfaceHolder holder = getHolder();
@@ -69,6 +69,7 @@ public class NesGameWindows extends SurfaceView implements SurfaceHolder.Callbac
         super(context, attrs, defStyleAttr);
 
     }
+
 
     public void initBaseDir(Context context) {
         File file = context.getExternalCacheDir();

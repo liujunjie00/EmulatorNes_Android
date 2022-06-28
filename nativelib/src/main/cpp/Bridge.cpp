@@ -101,13 +101,13 @@ JNIEXPORT jboolean JNICALL
 BRIDGE_PACKAGE(emulate)(JNIEnv *env, jobject obj, jint keys,
                         jint turbos, jint numFramesToSkip) {
     int res = emu->emulateFrame(keys, turbos, numFramesToSkip);
-    LOGD("emulate--------------keys:%d --- turbos:%d-----numFramesToSkip:%d",keys,turbos,numFramesToSkip);
+    //LOGD("emulate--------------keys:%d --- turbos:%d-----numFramesToSkip:%d",keys,turbos,numFramesToSkip);
     return res;
 }
 
 JNIEXPORT jboolean
 JNICALL BRIDGE_PACKAGE(render)(JNIEnv *env, jobject obj, jobject bitmap) {
-    LOGD("render----------------");
+    //LOGD("render----------------");
     return emu->render(env, bitmap, -1, -1, NULL);
 }
 
