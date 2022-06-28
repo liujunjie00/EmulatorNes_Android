@@ -1,4 +1,4 @@
-package com.ritchie.mapsandftms.features;
+package com.ritchie.bickmodule.features;
 
 public class TankeFeature extends Feature{
     private String Name; //游戏名字

@@ -1,4 +1,4 @@
-package android.util;
+package com.ritchie.myapplicationmove.util;
 
 import android.util.Log;
 
@@ -34,7 +34,7 @@ public class SystemUtil {
 	}
 
 	public static String execShellCmd(String command) {
-		android.util.Log.d("liujunjie","结果是"+"command"+command);
+		Log.d("liujunjie","结果是"+"command"+command);
 		String result = "";
 		Log.i("execShellCmd", command);
 		try {

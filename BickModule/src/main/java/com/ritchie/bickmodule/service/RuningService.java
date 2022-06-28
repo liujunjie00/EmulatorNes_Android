@@ -1,4 +1,4 @@
-package com.ritchie.mapsandftms.service;
+package com.ritchie.bickmodule.service;
 
 import android.app.Service;
 import android.bluetooth.BluetoothDevice;
@@ -16,11 +16,9 @@ import com.clj.fastble.BleManager;
 import com.clj.fastble.conn.BleCharacterCallback;
 import com.clj.fastble.conn.BleGattCallback;
 import com.clj.fastble.exception.BleException;
-import com.ritchie.mapsandftms.games.GameModel;
-import com.ritchie.mapsandftms.proFile.BikeData1;
-import com.ritchie.mapsandftms.proFile.BikeData2;
-import com.ritchie.mapsandftms.proFile.IconsoleProFile;
-import com.ritchie.mapsandftms.window.FloatingWindow;
+import com.ritchie.bickmodule.proFile.BikeData1;
+import com.ritchie.bickmodule.proFile.IconsoleProFile;
+
 
 import java.util.ArrayList;
 import java.util.List;

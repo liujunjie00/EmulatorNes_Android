@@ -1,8 +1,9 @@
-package com.ritchie.mapsandftms.games;
+package com.ritchie.bickmodule.games;
 
 import static android.content.Context.WINDOW_SERVICE;
 
-import static com.ritchie.mapsandftms.window.FloatingWindow.bikeData;
+
+import static com.ritchie.bickmodule.window.FloatingWindow.bikeData;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -16,7 +17,6 @@ import android.content.IntentFilter;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Looper;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
@@ -34,20 +34,20 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.ritchie.mapsandftms.R;
-import com.ritchie.mapsandftms.features.BaseCharacter;
-import com.ritchie.mapsandftms.features.MaliaoFeature;
-import com.ritchie.mapsandftms.features.SkillData;
-import com.ritchie.mapsandftms.features.TankeFeature;
-import com.ritchie.mapsandftms.proFile.Bike;
-import com.ritchie.mapsandftms.proFile.BikeData1;
-import com.ritchie.mapsandftms.proFile.ListParcelable;
-import com.ritchie.mapsandftms.service.RuningService;
-import com.ritchie.mapsandftms.service.SearchMapsServices;
-import com.ritchie.mapsandftms.ui.DashboardView4;
-import com.ritchie.mapsandftms.ui.VerticalProgress;
-import com.ritchie.mapsandftms.util.MapsTools;
-import com.ritchie.mapsandftms.util.SystemUtil;
+import com.ritchie.bickmodule.R;
+import com.ritchie.bickmodule.features.BaseCharacter;
+import com.ritchie.bickmodule.features.MaliaoFeature;
+import com.ritchie.bickmodule.features.SkillData;
+import com.ritchie.bickmodule.features.TankeFeature;
+import com.ritchie.bickmodule.proFile.Bike;
+import com.ritchie.bickmodule.proFile.BikeData1;
+import com.ritchie.bickmodule.proFile.ListParcelable;
+import com.ritchie.bickmodule.service.RuningService;
+import com.ritchie.bickmodule.service.SearchMapsServices;
+import com.ritchie.bickmodule.ui.DashboardView4;
+import com.ritchie.bickmodule.ui.VerticalProgress;
+import com.ritchie.bickmodule.util.MapsTools;
+import com.ritchie.bickmodule.util.SystemUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -326,7 +326,6 @@ public class GameModel implements View.OnClickListener{
     /**
      * 实现所有的点击事件
      */
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

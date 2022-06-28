@@ -1,4 +1,4 @@
-package com.ritchie.mapsandftms.window;
+package com.ritchie.bickmodule.window;
 
 import static android.content.Context.WINDOW_SERVICE;
 
@@ -17,9 +17,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 
-import com.ritchie.mapsandftms.R;
-import com.ritchie.mapsandftms.ui.VerticalProgress;
-import com.ritchie.mapsandftms.util.MapsTools;
+import com.ritchie.bickmodule.R;
+import com.ritchie.bickmodule.ui.VerticalProgress;
 
 import java.util.Random;
 

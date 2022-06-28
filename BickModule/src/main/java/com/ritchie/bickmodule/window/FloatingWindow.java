@@ -23,14 +23,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import com.ritchie.mapsandftms.R;
-import com.ritchie.mapsandftms.features.MaliaoFeature;
-import com.ritchie.mapsandftms.features.SkillData;
-import com.ritchie.mapsandftms.proFile.Bike;
-import com.ritchie.mapsandftms.proFile.BikeData1;
-import com.ritchie.mapsandftms.service.RuningService;
-import com.ritchie.mapsandftms.ui.VerticalProgress;
-import com.ritchie.mapsandftms.util.MapsTools;
+
+import com.ritchie.bickmodule.R;
+import com.ritchie.bickmodule.util.MapsTools;
+import com.ritchie.bickmodule.features.MaliaoFeature;
+import com.ritchie.bickmodule.features.SkillData;
+import com.ritchie.bickmodule.proFile.Bike;
+import com.ritchie.bickmodule.proFile.BikeData1;
+import com.ritchie.bickmodule.service.RuningService;
+import com.ritchie.bickmodule.ui.VerticalProgress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -192,6 +193,7 @@ public class FloatingWindow implements View.OnClickListener,View.OnFocusChangeLi
     /**
      * 这个函数是点击处理器
      */
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

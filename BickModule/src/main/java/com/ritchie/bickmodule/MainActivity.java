@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.ritchie.mapsandftms.service.ReadandwriteService;
-import com.ritchie.mapsandftms.service.RuningService;
+import com.ritchie.bickmodule.service.ReadandwriteService;
+
 
 public class MainActivity extends Activity {
     private String[] perms;

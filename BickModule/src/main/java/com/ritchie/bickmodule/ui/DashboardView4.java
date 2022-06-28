@@ -1,4 +1,4 @@
-package com.ritchie.mapsandftms.ui;
+package com.ritchie.bickmodule.ui;
 
 
 import android.content.Context;
@@ -16,7 +16,8 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
-import com.ritchie.mapsandftms.R;
+import com.ritchie.bickmodule.R;
+
 
 /**
  * DashboardView style 4，仿汽车速度仪表盘

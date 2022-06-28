@@ -2,4 +2,52 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ritchie.bickmodule">
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" /> <!-- 精确定位权限，在Android6.0及以上使用，蓝牙扫描需要用到这个的动态权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 模糊定位权限，在Android6.0及以上使用，蓝牙扫描需要用到这个的动态权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MapsAndFTMS">
+
+        <service
+            android:name=".service.RuningService"
+            android:enabled="true"
+            android:exported="true"/>
+        <service
+            android:name=".service.ReadandwriteService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.SearchMapsServices"
+            android:enabled="true"
+            android:exported="true" />
+
+        <!--android:theme="@android:style/Theme.NoDisplay"-->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
 </manifest>

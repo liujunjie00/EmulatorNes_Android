@@ -2,7 +2,8 @@ package com.ritchie.bickmodule.util;
 
 import android.util.Log;
 
-import com.ritchie.mapsandftms.features.BaseCharacter;
+
+import com.ritchie.bickmodule.features.BaseCharacter;
 
 import java.util.ArrayList;
 import java.util.List;

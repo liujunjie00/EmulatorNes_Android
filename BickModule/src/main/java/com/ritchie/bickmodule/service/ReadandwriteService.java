@@ -1,15 +1,14 @@
-package com.ritchie.mapsandftms.service;
+package com.ritchie.bickmodule.service;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
-import com.ritchie.mapsandftms.features.BaseCharacter;
-import com.ritchie.mapsandftms.features.MaliaoFeature;
-import com.ritchie.mapsandftms.features.SkillData;
-import com.ritchie.mapsandftms.features.TankeFeature;
-import com.ritchie.mapsandftms.games.GameModel;
-import com.ritchie.mapsandftms.window.FloatingWindow;
+import com.ritchie.bickmodule.features.BaseCharacter;
+import com.ritchie.bickmodule.features.SkillData;
+import com.ritchie.bickmodule.features.TankeFeature;
+import com.ritchie.bickmodule.games.GameModel;
+
 
 public class ReadandwriteService extends Service {
     public ReadandwriteService() {

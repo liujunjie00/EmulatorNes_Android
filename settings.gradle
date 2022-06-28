@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "My ApplicationMove"
 include ':app'
 include ':nativelib'
+include ':BickModule'

@@ -1,4 +1,4 @@
-package com.ritchie.mapsandftms.ui;
+package com.ritchie.bickmodule.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.ritchie.mapsandftms.R;
-import com.ritchie.mapsandftms.kotlin.MyProgress;
+import com.ritchie.bickmodule.R;
+
 
 public class VerticalProgress extends View {
 

@@ -1,4 +1,4 @@
-package com.ritchie.mapsandftms.features;
+package com.ritchie.bickmodule.features;
 
 import java.util.ArrayList;
 import java.util.List;

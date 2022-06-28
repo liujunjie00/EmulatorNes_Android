@@ -21,6 +21,8 @@ import com.ritchie.myapplicationmove.Keyboard.NesKeyDate;
 import com.ritchie.myapplicationmove.gameFile.GameFileInit;
 import com.ritchie.myapplicationmove.runtime.GameRuntimeInfo;
 import com.ritchie.myapplicationmove.ui.NesGameWindows;
+import com.ritchie.myapplicationmove.util.GameRomAddr;
+import com.ritchie.myapplicationmove.util.SystemUtil;
 import com.ritchie.nativelib.NativeLib;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        GameRomAddr.rmAddrFile();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //检查权限
@@ -66,6 +69,12 @@ public class MainActivity extends AppCompatActivity{
 
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
     }
 
 

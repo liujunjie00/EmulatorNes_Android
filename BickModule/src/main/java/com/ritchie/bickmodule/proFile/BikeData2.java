@@ -1,4 +1,4 @@
-package com.ritchie.mapsandftms.proFile;
+package com.ritchie.bickmodule.proFile;
 
 public class BikeData2 extends Bike {
    /* 0 More Data/Instantaneous Speed    Uint16   2位

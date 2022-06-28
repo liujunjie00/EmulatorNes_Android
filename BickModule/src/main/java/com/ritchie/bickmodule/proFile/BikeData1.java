@@ -1,7 +1,8 @@
-package com.ritchie.mapsandftms.proFile;
+package com.ritchie.bickmodule.proFile;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 
 public class BikeData1 extends Bike implements Parcelable {
     //[0000fff1] Notify: "                   00 00 00 00 00 00 00 05 01 00 33 0F 2B 00 00 00 73 AA"

@@ -1,4 +1,4 @@
-package com.ritchie.mapsandftms.proFile;
+package com.ritchie.bickmodule.proFile;
 
 import android.util.Log;
 

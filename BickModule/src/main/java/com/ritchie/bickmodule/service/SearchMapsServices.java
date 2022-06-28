@@ -1,20 +1,19 @@
-package com.ritchie.mapsandftms.service;
+package com.ritchie.bickmodule.service;
 
 import android.app.IntentService;
-import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Handler;
+
 import android.os.IBinder;
-import android.os.Parcel;
+
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.ritchie.mapsandftms.features.BaseCharacter;
-import com.ritchie.mapsandftms.games.GameModel;
-import com.ritchie.mapsandftms.proFile.ListParcelable;
-import com.ritchie.mapsandftms.util.MapsTools;
+import com.ritchie.bickmodule.features.BaseCharacter;
+import com.ritchie.bickmodule.proFile.ListParcelable;
+import com.ritchie.bickmodule.util.MapsTools;
+
 import java.util.List;
 
 /**
