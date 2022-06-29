@@ -328,25 +328,19 @@ public class GameModel implements View.OnClickListener{
      */
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.button1:
-                button1EventService2();
-                break;
-            case R.id.button2:
-                button2Evemt();
-                break;
-            case R.id.button3:
-                button3Event();
-                break;
-            case R.id.button4:
-                button4Event();
-                break;
-            case R.id.button5:
-                button5Event();
-                break;
-            case R.id.test_view3:
-                shoutdown();
-                break;
+        int id = view.getId();
+        if (id == R.id.button1) {
+            button1EventService2();
+        } else if (id == R.id.button2) {
+            button2Evemt();
+        } else if (id == R.id.button3) {
+            button3Event();
+        } else if (id == R.id.button4) {
+            button4Event();
+        } else if (id == R.id.button5) {
+            button5Event();
+        } else if (id == R.id.test_view3) {
+            shoutdown();
         }
         updateViewLayoutForKey(false);
 

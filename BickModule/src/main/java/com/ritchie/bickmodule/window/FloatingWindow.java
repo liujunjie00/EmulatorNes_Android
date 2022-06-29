@@ -196,20 +196,19 @@ public class FloatingWindow implements View.OnClickListener,View.OnFocusChangeLi
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.button1:
-                button1Event();
-                break;
-            case R.id.button2:
-                button2Evemt();
-                break;
-            case R.id.button3:
-                button3Event();
-                break;
-            case R.id.button4:
-                button4Event();
-            case R.id.button5:
-                button5Event();
+        int id = view.getId();
+        if (id == R.id.button1) {
+            button1Event();
+        } else if (id == R.id.button2) {
+            button2Evemt();
+        } else if (id == R.id.button3) {
+            button3Event();
+        } else if (id == R.id.button4) {
+            button4Event();
+
+            button5Event();
+        } else if (id == R.id.button5) {
+            button5Event();
         }
         updateViewLayoutForKey(false);
 

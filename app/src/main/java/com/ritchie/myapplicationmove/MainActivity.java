@@ -6,23 +6,23 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+
+import android.provider.Settings;
 import android.util.Log;
-import android.view.InputDevice;
+
 import android.view.KeyEvent;
-import android.view.MotionEvent;
+import android.view.WindowManager;
 
 
+import com.ritchie.bickmodule.service.ReadandwriteService;
 import com.ritchie.myapplicationmove.Keyboard.MyKeyBoardProFile;
 import com.ritchie.myapplicationmove.Keyboard.NesKeyDate;
 import com.ritchie.myapplicationmove.gameFile.GameFileInit;
 import com.ritchie.myapplicationmove.runtime.GameRuntimeInfo;
 import com.ritchie.myapplicationmove.ui.NesGameWindows;
 import com.ritchie.myapplicationmove.util.GameRomAddr;
-import com.ritchie.myapplicationmove.util.SystemUtil;
 import com.ritchie.nativelib.NativeLib;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -43,10 +43,26 @@ public class MainActivity extends AppCompatActivity{
         GameRomAddr.rmAddrFile();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /**
+         * 获取弹窗权限
+         * */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !Settings.canDrawOverlays(this)) {
+            getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+            startActivity(intent);
+        }
         //检查权限
-        perms = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+
+        perms = new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.BLUETOOTH_ADMIN,
+                Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_SCAN,
+                Manifest.permission.BLUETOOTH_CONNECT,Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE};
         checkPermission(perms);
+
+        //启动悬浮窗
+        Intent intent1 = new Intent(this, ReadandwriteService.class);
+        startService(intent1);
         //实例化窗口
         nativeLib = new NativeLib();
         nesGameWindows = findViewById(R.id.surface_view_game);
