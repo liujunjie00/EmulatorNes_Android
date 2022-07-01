@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.ritchie.myapplicationmove.ui.NesGameWindows
         android:id="@+id/surface_view_game"
         android:layout_width="match_parent"
-        android:layout_height="500dp" />
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.ritchie.bickmodule.ui.DashboardView4
+                android:id="@+id/board_view_progress_left"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="200dp"
+
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/write_rom_addr"
+                android:text="点击修改内存值"
+                />
+
+        </LinearLayout>
+
+        <com.ritchie.bickmodule.ui.DashboardView4
+            android:id="@+id/board_view_progress_right"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="1110dp"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/test_view5"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="1110dp"
+            android:visibility="gone"
+            />
+
+
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>

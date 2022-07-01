@@ -202,9 +202,9 @@ public class GameModel implements View.OnClickListener{
     /**
      * 需要弄一个蓝牙的动态注册接受*/
     public void initBroadcastReceiverBle(){
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("FindBluetoothDevices");
-        context.registerReceiver(broadcastReceiverBle,filter);
+        //IntentFilter filter = new IntentFilter();
+        //filter.addAction("FindBluetoothDevices");
+       // context.registerReceiver(broadcastReceiverBle,filter);
     }
 
     public void initWindow(){
@@ -244,6 +244,9 @@ public class GameModel implements View.OnClickListener{
         }
     }
 
+    /**
+     * 这个是那个炫酷的仪表
+     * */
     @SuppressLint("RtlHardcoded")
     public void speedShow(){
         windowManager2 = (WindowManager) context.getSystemService(WINDOW_SERVICE);
@@ -404,16 +407,6 @@ public class GameModel implements View.OnClickListener{
             }
 
     }
-    /*private void button2Evemt() {
-        if (!starGame){
-            tankeFeature.init(head);
-            Intent intent2 = new Intent(context, RuningService.class);
-            context.startService(intent2);
-            textViewMain.setText("正在寻找单车");
-            starGame=true;
-
-        }
-    }*/
     //开始扫描maps ，这里需要对新建的参数进行判断
     private void button1Event() {
         textViewMain.setText("正在查找");

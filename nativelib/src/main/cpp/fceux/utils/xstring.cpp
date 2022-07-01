@@ -166,6 +166,7 @@ int str_replace(char *str, char *search, char *replace) {
 	replacelen = strlen(replace);
 	if ((!strlen(str)) || (!searchlen)) return -1; //note: allow *replace to have a length of zero!
 	if (!(astr = (char*)malloc(strlen(str)+1))) return -1;
+
 	while (i < strlen(str)) {
 		if (!strncmp(str+i,search,searchlen)) {
 			if (replacelen) memcpy(astr+j,replace,replacelen);

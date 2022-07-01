@@ -33,7 +33,7 @@ Bridge::Bridge(Emulator *emulator) {
 JNIEXPORT jboolean JNICALL
 BRIDGE_PACKAGE(start)(JNIEnv *env, jobject obj, jint gfx, jint sfx,
                       jint general) {
-    system("rm /data/data/com.ritchie.myapplicationmove/romAddr");
+    system("rm /data/data/com.ritchie.myapplicationmove/RAMAddr");
     return (jboolean) emu->start(gfx, sfx, general);
 }
 
@@ -190,4 +190,14 @@ BRIDGE_PACKAGE(stop)(JNIEnv *env, jobject obj) {
     return emu->stop();
 }
 
+/**
+ * 这个参数就是上面传下来一个指针,和值,需要把这个指针的值改成value
+ * */
+JNIEXPORT jboolean JNICALL
+BRIDGE_PACKAGE(setAddrValue)(JNIEnv *env, jobject obj,jlong Addr,int value){
+    unsigned char *addr = ( unsigned char*)Addr;
+    LOGD("addr %ld value %d",Addr,value);
+   *addr = value;
+    return true;
+}
 }

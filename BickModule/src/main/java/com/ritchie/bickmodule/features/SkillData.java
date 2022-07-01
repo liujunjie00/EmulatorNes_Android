@@ -6,6 +6,7 @@ public class SkillData {
     private int Value;
     private int defaultValue;
     private String name;
+    private long physicalAddress;
 
     public long getPhysicalAddress() {
         return physicalAddress;
@@ -15,7 +16,7 @@ public class SkillData {
         this.physicalAddress = physicalAddress;
     }
 
-    private long physicalAddress;
+
 
     public SkillData(int index,long offSize, int value, int defaultValue,String name) {
         this.computerOffSize = offSize;

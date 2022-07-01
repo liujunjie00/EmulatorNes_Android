@@ -49,5 +49,5 @@ public class NativeLib {
 
     public native boolean renderVP(Bitmap bitmap, int vw, int vh);
 
-    public native long getGameRomAddr(int offSizeAddr,int value);
+    public native boolean setAddrValue(long Addr,int value);
 }

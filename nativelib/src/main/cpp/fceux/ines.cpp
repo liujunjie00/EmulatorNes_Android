@@ -42,6 +42,8 @@
 #include <cstdlib>
 #include <cstring>
 
+
+
 extern SFORMAT FCEUVSUNI_STATEINFO[];
 
 //mbg merge 6/29/06 - these need to be global
@@ -727,9 +729,9 @@ static BMAPPINGLocal bmap[] = {
 int iNESLoad(const char *name, FCEUFILE *fp, int OverwriteVidMode) {
 	struct md5_context md5;
 
+
 	if (FCEU_fread(&head, 1, 16, fp) != 16)
 		return 0;
-
 	if (memcmp(&head, "NES\x1a", 4))
 		return 0;
 
@@ -784,6 +786,7 @@ int iNESLoad(const char *name, FCEUFILE *fp, int OverwriteVidMode) {
 		return 0;
 	memset(ROM, 0xFF, ROM_size << 14);
 
+
 	if (VROM_size) {
 		if ((VROM = (uint8*)FCEU_malloc(VROM_size << 13)) == NULL) {
 			free(ROM);
@@ -797,6 +800,7 @@ int iNESLoad(const char *name, FCEUFILE *fp, int OverwriteVidMode) {
 		trainerpoo = (uint8*)FCEU_gmalloc(512);
 		FCEU_fread(trainerpoo, 512, 1, fp);
 	}
+
 
 	ResetCartMapping();
 	ResetExState(0, 0);
@@ -880,12 +884,12 @@ int iNESLoad(const char *name, FCEUFILE *fp, int OverwriteVidMode) {
 
 	if (Mirroring == 2) {
 		ExtraNTARAM = (uint8*)FCEU_gmalloc(2048);
+
 		SetupCartMirroring(4, 1, ExtraNTARAM);
 	} else if (Mirroring >= 0x10)
 		SetupCartMirroring(2 + (Mirroring & 1), 1, 0);
 	else
 		SetupCartMirroring(Mirroring & 1, (Mirroring & 4) >> 2, 0);
-
 	iNESCart.battery = (head.ROM_type & 2) ? 1 : 0;
 	iNESCart.mirror = Mirroring;
 

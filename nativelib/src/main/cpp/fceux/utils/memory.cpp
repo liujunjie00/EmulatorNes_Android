@@ -27,12 +27,8 @@
 #include "../types.h"
 #include "../fceu.h"
 #include "memory.h"
-#include <android/log.h>
-#define TAG "liujunjie"
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, TAG, __VA_ARGS__);
 
-static long addr = 0;
-char junjieTmp[100];
+
 ///allocates the specified number of bytes. exits process if this fails liujunjiesee
 void *FCEU_gmalloc(uint32 size)
 {
@@ -40,13 +36,7 @@ void *FCEU_gmalloc(uint32 size)
  void *ret;
  ret=malloc(size);
 
- system("touch /data/data/com.ritchie.myapplicationmove/romAddr");
- addr = (long)&ret;
- sprintf(junjieTmp,"echo %ld >> /data/data/com.ritchie.myapplicationmove/romAddr",addr);
- system(junjieTmp);
-
- LOGD("开辟内存地址空间是: %p  强转之后的类型 %ld",&ret,addr);
- if(!ret)  
+ if(!ret)
  {
   FCEU_PrintError("Error allocating memory!  Doing a hard exit.");
   exit(1);
@@ -65,6 +55,7 @@ void *FCEU_malloc(uint32 size)
  //0x72ea93b340
  void *ret;
  ret=malloc(size);
+
  if(!ret)
  {
   FCEU_PrintError("Error allocating memory!");
@@ -92,7 +83,8 @@ void FCEU_free(void *ptr)    // Might do something with this and FCEU_malloc lat
 
 void *FCEU_dmalloc(uint32 size)
 {
-    return malloc(size);
+ void *p = malloc(size);
+    return p;
 }
 
 void FCEU_dfree(void *ptr)

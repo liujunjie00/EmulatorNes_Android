@@ -38,6 +38,7 @@
 #include <cstdio>
 #include <climits>
 
+
 uint8 *Page[32], *VPage[8];
 uint8 **VPageR = VPage;
 uint8 *VPageG[8];
@@ -377,6 +378,7 @@ bool FCEU_OpenGenie(void)
 			if (fread(GENIEROM, 1, 4096, fp) != 4096)
 				goto grerr;
 			if (fseek(fp, 16384 - 4096, SEEK_CUR))
+
 				goto grerr;
 			if (fread(GENIEROM + 4096, 1, 256, fp) != 256)
 				goto grerr;

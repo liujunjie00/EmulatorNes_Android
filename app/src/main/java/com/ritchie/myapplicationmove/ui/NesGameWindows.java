@@ -6,8 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -16,7 +14,6 @@ import androidx.annotation.NonNull;
 import com.ritchie.nativelib.NativeLib;
 
 import java.io.File;
-import java.util.Timer;
 
 public class NesGameWindows extends SurfaceView implements SurfaceHolder.Callback {
     private final Bitmap vram = Bitmap.createBitmap(1080, 945, Bitmap.Config.ARGB_8888);

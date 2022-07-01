@@ -7,6 +7,7 @@
 #include "Bridge.h"
 #include "fceux/android_log.h"
 
+
 extern "C" {
 
 using namespace std;
@@ -145,10 +146,12 @@ public:
 
         for (int i = 0; i < numFramesToSkip; i++) {
             FCEUI_Emulate((uint8 **) &gfxBuf, &tmpSfxBuf, &ssize, 1);
+
             appendToSfxBuffer(tmpSfxBuf, ssize);
         }
 
         FCEUI_Emulate((uint8 **) &gfxBuf, &tmpSfxBuf, &ssize, 0);
+
         memcpy((void *) gfxBufs[workingGfx], (void *) gfxBuf, 256 * 240);
         swapBuffersAfterWrite();
 
@@ -334,6 +337,7 @@ public:
         }
 
         game = FCEUI_LoadGame(path, 0);
+
         FCEUI_SetVidSystem(isPal ? 1 : 0);
 
         if (game != NULL) {

@@ -34,6 +34,7 @@
 #include <cstdio>
 #include <cctype>
 
+
 using namespace std;
 
 static uint8 *CheatRPtrs[64];

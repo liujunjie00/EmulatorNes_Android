@@ -151,13 +151,11 @@ public class GameRuntimeInfo {
             long tiii = System.currentTimeMillis();
             if (tiii- startTime >=20 ){
                 startTime =tiii;
-                Log.d("SkillsAndGamesRunning", "SkillsAndGamesRunning: " + stKey.get());
+
                 nativeLib.emulate(stKey.get(),-(stTurbo.get()),0);
-                musicI++;
-                if (musicI == 2){
-                    musicI=0;
+                // 刷新声音
                     readSfxBuffer();
-                }
+
             }
         }
 

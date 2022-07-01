@@ -2,10 +2,13 @@ package com.ritchie.myapplicationmove;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -13,12 +16,20 @@ import android.provider.Settings;
 import android.util.Log;
 
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 
 
+import com.ritchie.bickmodule.features.BaseCharacter;
+import com.ritchie.bickmodule.features.SkillData;
+import com.ritchie.bickmodule.features.TankeFeature;
 import com.ritchie.bickmodule.service.ReadandwriteService;
+import com.ritchie.bickmodule.ui.DashboardView4;
 import com.ritchie.myapplicationmove.Keyboard.MyKeyBoardProFile;
 import com.ritchie.myapplicationmove.Keyboard.NesKeyDate;
+import com.ritchie.myapplicationmove.cadenceReceiver.BleReceiver;
 import com.ritchie.myapplicationmove.gameFile.GameFileInit;
 import com.ritchie.myapplicationmove.runtime.GameRuntimeInfo;
 import com.ritchie.myapplicationmove.ui.NesGameWindows;
@@ -36,13 +47,41 @@ public class MainActivity extends AppCompatActivity{
     private GameFileInit gameFileInit;
     private GameRuntimeInfo gameRuntimeInfo;
     private  NesKeyDate gameKey;
+    private GameRomAddr gameRomAddr;
+    private Button button1;
+    private BleReceiver bleReceiver;
+    private DashboardView4 dashboardView4;
+    private TextView textViewMain;
+    private TankeFeature tankeFeature;
+    private int requestCode = 0;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        GameRomAddr.rmAddrFile();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        dashboardView4 = findViewById(R.id.board_view_progress_left);
+        textViewMain = findViewById(R.id.test_view5);
+        String gameName = "坦克大战";
+        BaseCharacter baseCharacter = new BaseCharacter("0x52","0x59","0x4f","0x55","0x49",0x110);
+        SkillData skillData1 = new SkillData(0,0xa8,0x20,0x00,"模式切换1");
+        SkillData skillData2 = new SkillData(1,0xa8,0x40,0x00,"模式切换2");
+        SkillData skillData3 = new SkillData(2,0xa8,0x60,0x00,"模式切换3");
+        SkillData skillData4 = new SkillData(3,0x45,0x1f,0x00,"铁墙");
+        SkillData skillData5 = new SkillData(4,0x100,0x2,0x00,"禁止不动");
+        SkillData skillData6 = new SkillData(5,0x89,0x2,0x00,"保护模式");
+        SkillData[] skillData = new SkillData[]{
+                skillData1,
+                skillData2,
+                skillData3,
+                skillData4,
+                skillData5,
+                skillData6
+
+        };
+        tankeFeature = new TankeFeature(gameName,skillData,baseCharacter);
         /**
          * 获取弹窗权限
          * */
@@ -60,14 +99,27 @@ public class MainActivity extends AppCompatActivity{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE};
         checkPermission(perms);
 
+        //设置强制横屏
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        button1 = findViewById(R.id.write_rom_addr);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gameRomAddr.setAddrValue(0xa8, 0x60);
+            }
+        });
+
         //启动悬浮窗
-        Intent intent1 = new Intent(this, ReadandwriteService.class);
-        startService(intent1);
+        //Intent intent1 = new Intent(this, ReadandwriteService.class);
+        //startService(intent1);
         //实例化窗口
         nativeLib = new NativeLib();
         nesGameWindows = findViewById(R.id.surface_view_game);
         nesGameWindows.init();
         nesGameWindows.initBaseDir(getApplicationContext());
+        //0x7fc54b8cd0
+        //0x7fc54b8cd0
 
         //启动窗口模式
         nativeLib.start(0,102,11100);
@@ -81,6 +133,12 @@ public class MainActivity extends AppCompatActivity{
         gameRuntimeInfo.startGame();
 
         gameKey = new NesKeyDate(nativeLib,getApplicationContext());
+        gameRomAddr = new GameRomAddr(nativeLib);
+
+        //
+        bleReceiver = new BleReceiver(dashboardView4,textViewMain,nativeLib,tankeFeature);
+        bleReceiver.ConnectTheDevice(getApplicationContext());
+
 
 
 
@@ -163,25 +221,21 @@ public class MainActivity extends AppCompatActivity{
      * @param downOrUp  表示是否是按下还是抬起
      * */
     private void keypossess(int category, int keys, int trubo,boolean downOrUp) {
-
         if (!downOrUp){
             gameRuntimeInfo.resetStKey(keys,trubo);
-            Log.d(TAG, "keypossess: up:::::" + keys);
-
         }else {
-            Log.d(TAG, "keypossess: down::::" + keys);
             gameRuntimeInfo.setStKey(keys,trubo);
         }
-
-
     }
 
 
     private void checkPermission(String[] perms) {
-        if (!EasyPermissions.hasPermissions(this, perms)) {
-
-            ActivityCompat.requestPermissions(MainActivity.this, perms, 1);
-        }else {
+        for (int i = 0; i < perms.length; i++) {
+            int status = ContextCompat.checkSelfPermission(getApplicationContext(), perms[i]);
+            if (status != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, perms, requestCode);
+                return;
+            }
 
         }
     }

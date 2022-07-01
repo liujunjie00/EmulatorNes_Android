@@ -9,12 +9,10 @@
         android:layout_height="300dp"
         android:orientation="horizontal">
 
-        <com.ritchie.mapsandftms.ui.DashboardView4
+        <com.ritchie.bickmodule.ui.DashboardView4
             android:id="@+id/board_view_progress"
             android:layout_width="300dp"
             android:layout_height="300dp" />
-
-
     </LinearLayout>
 
 

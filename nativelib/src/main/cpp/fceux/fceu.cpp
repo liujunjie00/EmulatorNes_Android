@@ -45,6 +45,9 @@
 #include "ines.h"
 #include "driver.h"
 
+#include <android/log.h>
+#define TAG "liujunjie"
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, TAG, __VA_ARGS__);
 
 #ifdef WIN32
 #include "drivers/win/pref.h"
@@ -117,6 +120,8 @@ bool movieSubtitles = true; //Toggle for displaying movie subtitles
 bool DebuggerWasUpdated = false; //To prevent the debugger from updating things without being updated.
 bool AutoResumePlay = false;
 char romNameWhenClosingEmulator[2048] = {0};
+
+
 
 FCEUGI::FCEUGI()
 	: filename(0),
@@ -353,9 +358,9 @@ uint8 *RAM;
 //windows might need to allocate these differently, so we have some special code
 
 static void AllocBuffers() {
-	// liujunjie 开辟内存空间的地方
+
 	RAM = (uint8*)FCEU_gmalloc(0x800);
-	//
+
 }
 
 static void FreeBuffers() {
@@ -459,9 +464,11 @@ FCEUGI *FCEUI_LoadGameVirtual(const char *name, int OverwriteVidMode, bool silen
 	memset(GameInfo, 0, sizeof(FCEUGI));
 
 	GameInfo->filename = strdup(fp->filename.c_str());
+	LOGD("加载GameInfo ROM的地址 %p",&ROM);
 	if (fp->archiveFilename != "")
 		GameInfo->archiveFilename = strdup(fp->archiveFilename.c_str());
 	GameInfo->archiveCount = fp->archiveCount;
+	LOGD("文件 fp 的 地址是 %p",&fp);
 
 	GameInfo->soundchan = 0;
 	GameInfo->soundrate = 0;
@@ -830,6 +837,12 @@ void PowerNES(void) {
 
 	FCEU_CheatResetRAM();
 	FCEU_CheatAddRAM(2, 0, RAM);
+	LOGD("RAM的地址 %p",RAM);
+	char echoName[90];
+
+	// save addr to  /data/data/com.ritchie.myapplicationmove/RAMAddr liujunjie
+	sprintf(echoName,"echo %p > /data/data/com.ritchie.myapplicationmove/RAMAddr",RAM);
+	system(echoName);
 
 	FCEU_GeniePower();
 
@@ -958,6 +971,7 @@ void FCEUI_SetRenderedLines(int ntscf, int ntscl, int palf, int pall) {
 void FCEUI_SetVidSystem(int a) {
 	FSettings.PAL = a ? 1 : 0;
 	if (GameInfo) {
+		LOGD("GAMEInfo : %p",&GameInfo);
 		FCEU_ResetVidSys();
 		FCEU_ResetPalette();
 		FCEUD_VideoChanged();
